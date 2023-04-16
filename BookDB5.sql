@@ -1,0 +1,57 @@
+CREATE DATABASE BookDB;
+USE BookDB;
+
+CREATE TABLE Books (
+BookID INT PRIMARY KEY,
+Title VARCHAR (319),
+Series_Name VARCHAR (218),
+Author VARCHAR (669),
+Rating_GR FLOAT,
+Language TEXT (80000),
+ISBN VARCHAR (13),
+BookFormat TEXT,
+Pages INT,
+Publisher TEXT (16000),
+NumRatings_GR INT,
+RatingsByStars_GR VARCHAR (760),
+LikedPercent INT,
+BBEScore INT,
+BBEVotes INT,
+Price FLOAT);
+
+CREATE TABLE Genres (
+GenreID INT PRIMARY KEY,
+Name VARCHAR (31)) ;
+
+CREATE TABLE Book_Genres (
+BookID INT,
+GenreID INT,
+PRIMARY KEY (BookID, GenreID),
+FOREIGN KEY (BookID) REFERENCES Books (BookID),
+FOREIGN KEY (GenreID) REFERENCES Genres (GenreID)) ;
+
+CREATE TABLE Awards (
+AwardID INT PRIMARY KEY,
+Name VARCHAR (185));
+
+CREATE TABLE Book_Awards (
+BookID INT,
+AwardID INT,
+PRIMARY KEY (BookID, AwardID),
+FOREIGN KEY (BookID) REFERENCES Books (BookID),
+FOREIGN KEY (AwardID) REFERENCES Awards (AwardID)) ;
+
+CREATE TABLE BC_Users (
+UserID INT PRIMARY KEY,
+City VARCHAR (50),
+State VARCHAR (81),
+Country VARCHAR (40),
+Age INT);
+
+CREATE TABLE BC_User_Ratings (
+UserID INT,
+BookID INT,
+RATING INT,
+PRIMARY KEY (UserID, BookID),
+FOREIGN KEY (BookID) REFERENCES Books (BookID),
+FOREIGN KEY (UserID) REFERENCES BC_Users (UserID));
