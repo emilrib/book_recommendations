@@ -1,7 +1,7 @@
 #Optimized Query 2
 #Reordered columns and joins
 #Reduced group by
-#rordered filtering statements
+#reordered filtering statements
 SELECT 
 	bg.GenreID AS GenreID
 	,gen.Name AS Genre
