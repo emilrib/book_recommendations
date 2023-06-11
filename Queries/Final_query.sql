@@ -64,6 +64,8 @@ CREATE INDEX idx_books_bookid ON bookdb.books(BookID);
 CREATE INDEX idx_book_genres_bookid ON bookdb.book_genres(BookID);
 CREATE INDEX idx_genres_genreid ON bookdb.genres(GenreID);
 CREATE INDEX idx_bc_users_userid ON bookdb.bc_users(UserID);
+CREATE INDEX idx_us_age ON bookdb.bc_users (Age);
+CREATE INDEX idx_rat_rating ON bookdb.bc_user_ratings (RATING);
 
 SELECT
     bg.GenreID AS GenreID
@@ -89,12 +91,12 @@ WHERE
     AND bg.GenreID IN (2, 6, 4, 1, 42, 114, 26, 20, 21, 56, 17, 15, 7, 19, 28, 5, 12)
 GROUP BY
 	bg.GenreID
-	,gen.Name
 	,us.UserID
-	,us.Country
-	,us.Age
-	,rat.RATING
 	,book.BookID;
+    
+    
+
+
     
 
 
